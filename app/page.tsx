@@ -46,25 +46,46 @@ const gallery = [
 
 const formatSteps = [
   ['01', 'Showcase', 'The games and event software built by the Hackathon Software department go on display, alongside games from Hack Software and builds from Hack Hardware. It is where the whole club’s semester of work gets seen.'],
-  ['02', 'Build', 'Teams of 2 to 4 build around the semester’s theme in one of four tracks. The build window follows the familiar hackathon format unless the board changes it: around 5 hours.'],
-  ['03', 'Presentations + prizes', 'Every team presents with its code on screen, explains its choices, and answers judge questions. Scores are tallied and prizes go out at the end.'],
+  ['02', 'Build', 'Teams of 2 to 4 build around the Winter Hackathon topic—Parent-Teacher Connection—across four award categories. The build window follows the familiar hackathon format unless the board changes it: around 5 hours.'],
+  ['03', 'Presentations + prizes', 'Every team submits an ~4-minute video and presents their work, explains their choices, and answers judge questions. Scores are tallied and prizes go out at the end.'],
 ]
 
 const tracks = [
-  ['DUCKY FIX', 'TBA', 'The theme is announced at the actual event. Every project must explain how it answers that theme.'],
-  ['LEVEL UP', 'Build a game', 'Make it playable by a judge in under two minutes, while still connecting clearly to the theme.'],
-  ['WIRED', 'Build with hardware', 'Use physical hardware where a microcontroller reads or controls something in the real world. Hack Hardware pods compete here.'],
-  ['WILDCARD', 'Build it anyway', 'Does not fit the other three? Go for it, as long as you can justify how it answers the theme.'],
+  [
+    'COMMUNICATION',
+    'Best Communication Award',
+    'It will be evaluated based on the video. The video will be approximately 4 minutes. The award will be based on how evenly they spread their section in the video and how deeply and feasible their project is.',
+  ],
+  [
+    'SOFTWARE: BEGINNER',
+    'Beginner Software Award',
+    'This award is based on how impressive a team’s innovation is as an idea and a pitch instead of coding or implementation capacity, demonstrating how a team’s innovation and use of software allowed for an effective project. Intended for teams who create a presentation, sketch, or anything that enables parent-teacher connection effectively without heavy software/systems.',
+  ],
+  [
+    'SOFTWARE: ADVANCED',
+    'Advanced Software Award',
+    'This sectional award is based on how well you build the software—actual coding implementation and software output that works as a product, not just a pitch. Fundamentally: how much actual code did you write, how well can it work as a product, and is it an effective software implementation of your idea?',
+  ],
+  [
+    'HARDWARE',
+    'Hardware Award',
+    'This award recognizes teams that put together the digital and physical world—most effectively integrating 3D modeling or CAD to build or demonstrate their solution. Evaluated on how easily the hardware interacts with software, creativity, and effectiveness.',
+  ],
 ]
 
-const awards = ['Best First-Time Team', 'Best Justification', 'Crowd Favorite']
+const awards = [
+  'Best Communication Award',
+  'Beginner Software Award',
+  'Advanced Software Award',
+  'Hardware Award',
+]
 
 const rubric = [
-  ['It works', '25', 'The project runs live, not just in slides.'],
+  ['It works', '25', 'The project runs live or functions as a clear, cohesive prototype.'],
   ['Justification', '25', 'Why this problem, why this approach, and what the team would change with more time.'],
-  ['Code', '20', 'Readable, and every team member can explain their part.'],
-  ['Theme fit', '15', 'How directly the project answers the semester’s theme.'],
-  ['Presentation', '15', 'Clear, on time, and the demo actually lands.'],
+  ['Implementation / Craft', '20', 'Code quality, CAD/3D design, or pitch depth—and every member can explain their part.'],
+  ['Theme fit', '15', 'How directly the project boosts parent-teacher connection and day-to-day involvement.'],
+  ['Presentation', '15', 'Evenly distributed ~4-minute video/demo, clear delivery, and strong answers to questions.'],
 ]
 
 const schedule = [
@@ -77,11 +98,11 @@ const schedule = [
 
 const faqs = [
   ['Who can participate?', 'Any student with a drive to build and willingness to learn. No prior experience required.'],
-  ['Do I need experience?', 'Not at all. We have offer event-day quick coaching, a flexible grading rubric, and plenty of time to learn as you build.'],
+  ['Do I need experience?', 'Not at all. With tracks like the Beginner Software Award and Best Communication Award, you can compete with a strong concept, sketch, or pitch—or dive into full code and CAD hardware.'],
   ['Do I need a team?', 'Come solo or bring up to three friends. We can also make balanced groups based on experience levels.'],
   ['What should I bring?', 'A laptop, charger, water bottle, and anything that helps you think. We provide food, Wi-Fi, and good energy.'],
   ['Is it free?', 'Yes. Registration is completely free thanks to our community sponsors.'],
-  ['What are the prizes?', 'Prizes include hardware, a fun experience, and bragging rights for a year.'],
+  ['What are the prizes?', 'Awards across Communication, Beginner Software, Advanced Software, and Hardware—plus gear and bragging rights for a year.'],
 ]
 
 function SectionLabel({ children }: { children: string }) {
@@ -112,50 +133,3 @@ function Countdown() {
     }
 
     updateCountdown()
-    const timer = setInterval(updateCountdown, 1000)
-    return () => clearInterval(timer)
-  }, [])
-
-  return (
-    <div className="countdown" aria-label="Countdown to event">
-      <span><b>{String(time.days).padStart(2, '0')}</b><small>days</small></span><i>:</i>
-      <span><b>{String(time.hours).padStart(2, '0')}</b><small>hrs</small></span><i>:</i>
-      <span><b>{String(time.minutes).padStart(2, '0')}</b><small>min</small></span><i>:</i>
-      <span><b>{String(time.seconds).padStart(2, '0')}</b><small>sec</small></span>
-    </div>
-  )
-}
-
-export default function Page() {
-  const [menuOpen, setMenuOpen] = useState(false)
-  const [member, setMember] = useState(0)
-  const [lightbox, setLightbox] = useState<number | null>(null)
-  const [openFaq, setOpenFaq] = useState(0)
-
-  useEffect(() => {
-    const timer = setInterval(() => setMember((value) => (value + 1) % members.length), 5000)
-    return () => clearInterval(timer)
-  }, [])
-
-  return (
-    <main>
-      <nav className="nav"><a href="#top" className="brand"><span className="brand-mark">&gt;_</span> QHSS HACKATHON</a><div className={`nav-links ${menuOpen ? 'open' : ''}`}><a href="#about" onClick={() => setMenuOpen(false)}>About</a><a href="#people" onClick={() => setMenuOpen(false)}>People</a><a href="#format" onClick={() => setMenuOpen(false)}>Format</a><a href="#sponsors" onClick={() => setMenuOpen(false)}>Sponsors</a><a href="#faq" onClick={() => setMenuOpen(false)}>FAQ</a></div><a href="#register" className="nav-cta">Register <ArrowUpRight size={15} /></a><button className="menu-button" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle navigation">{menuOpen ? <X /> : <Menu />}</button></nav>
-
-      <section className="hero section-pad" id="top"><div className="hero-orbit" /><div className="hero-grid" /><div className="hero-copy"><div className="eyebrow"><span className="live-dot" />QHSS HACKATHON / WINTER 2026-2027</div><h1>Build what<br /><em>matters.</em><span className="cursor">_</span></h1><p className="hero-sub">5 hours. One challenge. 3 Winners.</p><div className="hero-actions"><a className="button primary" href="#register">Register now <ArrowUpRight size={17} /></a><a className="button secondary" href="#about">Explore the event <ArrowDown size={16} /></a></div><div className="hero-meta"><span><CalendarDays size={15} /> JAN 20, 2027 / 08:00 EDT</span><span><MapPin size={15} /> QHSS / JAMAICA</span><span><Clock3 size={15} /> 5-HOURS OF DEVELOPING</span></div></div><div className="countdown-wrap"><span className="countdown-label">EVENT STARTS IN</span><Countdown /></div></section>
-
-      <section className="section-pad about" id="about"><div className="section-heading"><SectionLabel>01 / ABOUT</SectionLabel><h2>Ideas are only<br /><span>the beginning.</span></h2></div><div className="about-content"><div className="about-intro"><p className="large-copy">QHSS Hackathon is where students stop waiting for permission and start making things.</p><p>Hosted by QHSS Hack Club and the Hackathon Committee, we bring together high school builders of every skill level for one unforgettable day of learning, collaboration, and shipping. No grades. No gatekeeping. Just a room full of people who want to see what is possible.</p><a className="text-link" href="#register">Get in the room <ArrowRight size={16} /></a></div><div className="stat-grid"><div><b>100<span>+</span></b><small>hackers</small></div><div><b>5</b><small>hours</small></div><div><b>~$1K</b><small>in prizes</small></div><div><b>3</b><small>winners crowned</small></div></div></div><div className="beginner-card"><div className="icon-box"><Terminal /></div><div><SectionLabel>NEW TO THIS?</SectionLabel><h3>What is a hackathon?</h3><p>It is a creative sprint where you team up, learn something new, and build a project from scratch. Think less “competition” and more “permission to try.”</p></div><ArrowUpRight className="corner-arrow" /></div></section>
-
-      <section className="section-pad people-section" id="people"><div className="section-heading split"><div><SectionLabel>02 / THE CREW</SectionLabel><h2>Meet the people<br /><span>behind the magic.</span></h2></div><div className="carousel-controls"><button onClick={() => setMember((member - 1 + members.length) % members.length)} aria-label="Previous member"><ArrowLeft /></button><button onClick={() => setMember((member + 1) % members.length)} aria-label="Next member"><ArrowRight /></button></div></div><div className="member-card"><div className="member-image-wrap"><img src={members[member].image} alt={members[member].name} /><span className="image-tag">QHSS / 2026-27</span></div><div className="member-info"><span className="member-number">0{member + 1} / 0{members.length}</span><div><p className="role">{members[member].role}</p><h3>{members[member].name}</h3><p>{members[member].bio}</p></div><div className="dots">{members.map((_, index) => <button key={index} className={index === member ? 'active' : ''} onClick={() => setMember(index)} aria-label={`Show member ${index + 1}`} />)}</div></div></div></section>
-
-      <section className="section-pad format-section" id="format"><div className="section-heading"><SectionLabel>03 / THE FORMAT</SectionLabel><h2>Make something<br /><span>worth showing.</span></h2></div><div className="format-steps">{formatSteps.map(([number, title, description]) => <article className="format-step" key={title}><span className="format-number">{number}</span><div><h3>{title}</h3><p>{description}</p></div></article>)}</div><div className="tracks-heading"><SectionLabel>THE FOUR TRACKS</SectionLabel><p>Every team picks one track. Whichever one you choose, your presentation has to explain how the project answers the theme.</p></div><div className="track-grid">{tracks.map(([name, title, description]) => <article className="track-card" key={name}><span className="track-name">{name}</span><h3>{title}</h3><p>{description}</p></article>)}</div><div className="judging-grid"><div><SectionLabel>JUDGING</SectionLabel><h3>4 minutes to present.<br /><span>2 minutes of questions.</span></h3><p>Code has to be on screen at some point. Judges score every team out of 100 on the rubric below.</p><div className="award-list"><p>Special awards</p>{awards.map((award) => <span key={award}>{award}</span>)}</div></div><div className="rubric"><div className="rubric-row rubric-head"><span>Category</span><span>Points</span><span>What judges look for</span></div>{rubric.map(([category, points, criteria]) => <div className="rubric-row" key={category}><strong>{category}</strong><b>{points}</b><span>{criteria}</span></div>)}</div></div></section>
-
-      <section className="section-pad sponsor-cta" id="sponsors"><div className="section-heading"><SectionLabel>04 / FOR SPONSORS</SectionLabel><h2>Put your brand<br /><span>in the future.</span></h2></div><div className="sponsor-cta-body"><p className="large-copy">The next generation is already building. Give them the tools, context, and encouragement to go further.</p><a className="button primary" href="Email in progress! Come back later!">Become a sponsor <ArrowUpRight size={17} /></a></div></section>
-
-      <section className="section-pad faq-section" id="faq"><div className="section-heading split"><div><SectionLabel>05 / QUESTIONS, ANSWERED</SectionLabel><h2>Good to<br /><span>know.</span></h2></div><MessageCircle className="faq-icon" /></div><div className="faq-list">{faqs.map(([question, answer], index) => <div className={`faq-item ${openFaq === index ? 'open' : ''}`} key={question}><button onClick={() => setOpenFaq(openFaq === index ? -1 : index)}><span>0{index + 1}</span>{question}{openFaq === index ? <Minus /> : <Plus />}</button>{openFaq === index && <p>{answer}</p>}</div>)}</div></section>
-
-      <footer className="footer section-pad" id="register"><div className="footer-top"><div><a href="#top" className="brand"><span className="brand-mark">&gt;_</span> QHSS HACKATHON</a><p>Make something worth<br />talking about.</p></div><div className="footer-register"><SectionLabel>READY TO SHIP?</SectionLabel><h2>Your next idea<br /><span>starts here.</span></h2><a className="button primary" href="Interest form not made yet!">Register your interest <ArrowUpRight size={17} /></a></div></div><div className="footer-bottom"><span>© 2025 QHSS HACK CLUB AND HACKATHON COMMITTEE</span><span>JAMAICA, NY / USA</span><div className="socials"><a href="https://github.com" aria-label="GitHub"><Code2 /></a><a href="https://instagram.com/qhsshackathon/" aria-label="Instagram"><Camera /></a><a href="https://linkedin.com" aria-label="LinkedIn"><BriefcaseBusiness /></a><a href="mailto:hello@bytefest.example" aria-label="Email"><Mail /></a></div></div></footer>
-
-      {lightbox !== null && <div className="lightbox" role="dialog" aria-modal="true" onClick={() => setLightbox(null)}><button className="lightbox-close" onClick={() => setLightbox(null)} aria-label="Close gallery"><X /></button><img src={gallery[lightbox][1]} alt={gallery[lightbox][0]} onClick={(event) => event.stopPropagation()} /><p>{gallery[lightbox][0]}</p></div>}
-    </main>
-  )
-}
