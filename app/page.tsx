@@ -318,7 +318,7 @@ export default function Page() {
         </div>
         <div className="sponsor-cta-body">
           <p className="large-copy">The next generation is already building. Give them the tools, context, and encouragement to go further.</p>
-          <a className="button primary" href="Email in progress! Come back later!">Become a sponsor <ArrowUpRight size={17} /></a>
+          <a className="button primary" href="mailto:hack.athon.qhss@gmail.com">Become a sponsor <ArrowUpRight size={17} /></a>
         </div>
       </section>
 
@@ -351,17 +351,17 @@ export default function Page() {
           <div className="footer-register">
             <SectionLabel>READY TO SHIP?</SectionLabel>
             <h2>Your next idea<br /><span>starts here.</span></h2>
-            <a className="button primary" href="Interest form not made yet!">Register your interest <ArrowUpRight size={17} /></a>
+            <a className="button primary" href="mailto:hack.athon.qhss@gmail.com">Register your interest <ArrowUpRight size={17} /></a>
           </div>
         </div>
         <div className="footer-bottom">
-          <span>© 2025 QHSS HACK CLUB AND HACKATHON COMMITTEE</span>
+          <span>© 2026 QHSS HACK CLUB AND HACKATHON COMMITTEE</span>
           <span>JAMAICA, NY / USA</span>
           <div className="socials">
             <a href="https://github.com" aria-label="GitHub"><Code2 /></a>
             <a href="https://instagram.com/qhsshackathon/" aria-label="Instagram"><Camera /></a>
             <a href="https://linkedin.com" aria-label="LinkedIn"><BriefcaseBusiness /></a>
-            <a href="mailto:hello@bytefest.example" aria-label="Email"><Mail /></a>
+            <a href="mailto:hack.athon.qhss@gmail.com" aria-label="Email"><Mail /></a>
           </div>
         </div>
       </footer>
