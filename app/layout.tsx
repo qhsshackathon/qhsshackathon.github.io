@@ -2,20 +2,24 @@ import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'QHSS HACKATHON! - Coming Soon...',
-  description: "QHSS's day-long hackathon for curious minds, bold ideas, and the code to bring them to life.",
+  title: 'QHSS Hackathon',
+  description: "QHSS Hackathon brings students together to build ideas, products, and solutions that strengthen the school community.",
   icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-    ],
-    apple: '/apple-icon.png',
+    icon: '/qhss-hackathon-logo.png',
+    apple: '/qhss-hackathon-logo.png',
+  },
+  openGraph: {
+    title: 'QHSS Hackathon',
+    description: 'Students building ideas that strengthen the school community.',
+    siteName: 'QHSS Hackathon',
+    type: 'website',
+    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'QHSS Hackathon logo' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'QHSS Hackathon',
+    description: 'Students building ideas that strengthen the school community.',
+    images: ['/og-image.jpg'],
   },
 }
 

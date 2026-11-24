@@ -161,7 +161,7 @@ export default function Page() {
   return (
     <main>
       <nav className="nav">
-        <a href="#top" className="brand"><span className="brand-mark">&gt;_</span> QHSS HACKATHON</a>
+        <a href="#top" className="brand" aria-label="QHSS Hackathon home"><img className="brand-logo" src="/qhss-hackathon-logo.png" alt="QHSS Hackathon logo" /></a>
         <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
           <a href="#about" onClick={() => setMenuOpen(false)}>About</a>
           <a href="#theme" onClick={() => setMenuOpen(false)}>Theme</a>
@@ -220,8 +220,8 @@ export default function Page() {
           <div>
             <SectionLabel>WINTER HACKATHON / TOPIC: PARENT-TEACHER CONNECTION</SectionLabel>
             <h3>Context &amp; Goal</h3>
-            <p style={{ marginBottom: '12px' }}><strong style={{ color: '#eaf3ed' }}>Context:</strong> Even in the world of digital media, the connection between our teachers and parents is still lacking on what&apos;s been going on in school and our active day-to-day performance.</p>
-            <p><strong style={{ color: '#eaf3ed' }}>Goal:</strong> Make an idea, product, and vision on how we can boost that connection between parents and teachers to become more involved.</p>
+            <p style={{ marginBottom: '12px' }}><strong style={{ color: '#eaf3ed' }}>Context:</strong> Even in a world shaped by digital media, communication between teachers and parents can still fall short. Parents may not have a clear picture of what is happening at school, how their children are performing day to day, or the stress they are experiencing. This gap can also exist between students and their parents, leaving families without the information they need to offer meaningful support.</p>
+            <p><strong style={{ color: '#eaf3ed' }}>Goal:</strong> Develop an idea, product, or vision that strengthens the connection between teachers and parents or between students and parents, helping families become more informed, involved, and connected to the school community.</p>
           </div>
           <ArrowUpRight className="corner-arrow" />
         </div>
@@ -345,7 +345,7 @@ export default function Page() {
       <footer className="footer section-pad" id="register">
         <div className="footer-top">
           <div>
-            <a href="#top" className="brand"><span className="brand-mark">&gt;_</span> QHSS HACKATHON</a>
+            <a href="#top" className="brand" aria-label="QHSS Hackathon home"><img className="brand-logo" src="/qhss-hackathon-logo.png" alt="QHSS Hackathon logo" /></a>
             <p>Make something worth<br />talking about.</p>
           </div>
           <div className="footer-register">
