@@ -161,4 +161,218 @@ export default function Page() {
   return (
     <main>
       <nav className="nav">
-        <a href="#top" className="brand"><span className="brand-
+        <a href="#top" className="brand"><span className="brand-mark">&gt;_</span> QHSS HACKATHON</a>
+        <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
+          <a href="#about" onClick={() => setMenuOpen(false)}>About</a>
+          <a href="#theme" onClick={() => setMenuOpen(false)}>Theme</a>
+          <a href="#people" onClick={() => setMenuOpen(false)}>People</a>
+          <a href="#format" onClick={() => setMenuOpen(false)}>Format</a>
+          <a href="#sponsors" onClick={() => setMenuOpen(false)}>Sponsors</a>
+          <a href="#faq" onClick={() => setMenuOpen(false)}>FAQ</a>
+        </div>
+        <a href="#register" className="nav-cta">Register <ArrowUpRight size={15} /></a>
+        <button className="menu-button" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle navigation">{menuOpen ? <X /> : <Menu />}</button>
+      </nav>
+
+      <section className="hero section-pad" id="top">
+        <div className="hero-orbit" />
+        <div className="hero-grid" />
+        <div className="hero-copy">
+          <div className="eyebrow"><span className="live-dot" />WINTER HACKATHON / PARENT-TEACHER CONNECTION</div>
+          <h1>Build what<br /><em>matters.</em><span className="cursor">_</span></h1>
+          <p className="hero-sub">5 hours. One challenge: Parent-Teacher Connection. 4 Awards.</p>
+          <div className="hero-actions">
+            <a className="button primary" href="#register">Register now <ArrowUpRight size={17} /></a>
+            <a className="button secondary" href="#theme">Explore the event <ArrowDown size={16} /></a>
+          </div>
+          <div className="hero-meta">
+            <span><CalendarDays size={15} /> JAN 20, 2027 / 08:00 EDT</span>
+            <span><MapPin size={15} /> QHSS / JAMAICA</span>
+            <span><Clock3 size={15} /> 5-HOURS OF DEVELOPING</span>
+          </div>
+        </div>
+        <div className="countdown-wrap">
+          <span className="countdown-label">EVENT STARTS IN</span>
+          <Countdown />
+        </div>
+      </section>
+
+      <section className="section-pad about" id="about">
+        <div className="section-heading">
+          <SectionLabel>01 / ABOUT</SectionLabel>
+          <h2>Ideas are only<br /><span>the beginning.</span></h2>
+        </div>
+        <div className="about-content">
+          <div className="about-intro">
+            <p className="large-copy">QHSS Hackathon is where students stop waiting for permission and start making things.</p>
+            <p>Hosted by QHSS Hack Club and the Hackathon Committee, we bring together high school builders of every skill level for one unforgettable day of learning, collaboration, and shipping. No grades. No gatekeeping. Just a room full of people who want to see what is possible.</p>
+            <a className="text-link" href="#register">Get in the room <ArrowRight size={16} /></a>
+          </div>
+          <div className="stat-grid">
+            <div><b>100<span>+</span></b><small>hackers</small></div>
+            <div><b>5</b><small>hours</small></div>
+            <div><b>~$1K</b><small>in prizes</small></div>
+            <div><b>4</b><small>awards crowned</small></div>
+          </div>
+        </div>
+        <div className="beginner-card" id="theme">
+          <div className="icon-box"><Users /></div>
+          <div>
+            <SectionLabel>WINTER HACKATHON / TOPIC: PARENT-TEACHER CONNECTION</SectionLabel>
+            <h3>Context &amp; Goal</h3>
+            <p style={{ marginBottom: '12px' }}><strong style={{ color: '#eaf3ed' }}>Context:</strong> Even in the world of digital media, the connection between our teachers and parents is still lacking on what&apos;s been going on in school and our active day-to-day performance.</p>
+            <p><strong style={{ color: '#eaf3ed' }}>Goal:</strong> Make an idea, product, and vision on how we can boost that connection between parents and teachers to become more involved.</p>
+          </div>
+          <ArrowUpRight className="corner-arrow" />
+        </div>
+      </section>
+
+      <section className="section-pad people-section" id="people">
+        <div className="section-heading split">
+          <div>
+            <SectionLabel>02 / THE CREW</SectionLabel>
+            <h2>Meet the people<br /><span>behind the magic.</span></h2>
+          </div>
+          <div className="carousel-controls">
+            <button onClick={() => setMember((member - 1 + members.length) % members.length)} aria-label="Previous member"><ArrowLeft /></button>
+            <button onClick={() => setMember((member + 1) % members.length)} aria-label="Next member"><ArrowRight /></button>
+          </div>
+        </div>
+        <div className="member-card">
+          <div className="member-image-wrap">
+            <img src={members[member].image} alt={members[member].name} />
+            <span className="image-tag">QHSS / 2026-27</span>
+          </div>
+          <div className="member-info">
+            <span className="member-number">0{member + 1} / 0{members.length}</span>
+            <div>
+              <p className="role">{members[member].role}</p>
+              <h3>{members[member].name}</h3>
+              <p>{members[member].bio}</p>
+            </div>
+            <div className="dots">
+              {members.map((_, index) => (
+                <button key={index} className={index === member ? 'active' : ''} onClick={() => setMember(index)} aria-label={`Show member ${index + 1}`} />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section-pad format-section" id="format">
+        <div className="section-heading">
+          <SectionLabel>03 / THE FORMAT</SectionLabel>
+          <h2>Make something<br /><span>worth showing.</span></h2>
+        </div>
+        <div className="format-steps">
+          {formatSteps.map(([number, title, description]) => (
+            <article className="format-step" key={title}>
+              <span className="format-number">{number}</span>
+              <div>
+                <h3>{title}</h3>
+                <p>{description}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+        <div className="tracks-heading">
+          <SectionLabel>AWARDS &amp; CRITERIA</SectionLabel>
+          <p>Every team tackles the Parent-Teacher Connection topic and competes across four specialized award categories based on their approach.</p>
+        </div>
+        <div className="track-grid">
+          {tracks.map(([name, title, description]) => (
+            <article className="track-card" key={name}>
+              <span className="track-name">{name}</span>
+              <h3>{title}</h3>
+              <p>{description}</p>
+            </article>
+          ))}
+        </div>
+        <div className="judging-grid">
+          <div>
+            <SectionLabel>JUDGING</SectionLabel>
+            <h3>~4 minute video.<br /><span>2 minutes of questions.</span></h3>
+            <p>Videos are evaluated on how evenly team members split their sections and how deeply and feasibly their project addresses parent-teacher connection.</p>
+            <div className="award-list">
+              <p>Winter Hackathon Awards</p>
+              {awards.map((award) => <span key={award}>{award}</span>)}
+            </div>
+          </div>
+          <div className="rubric">
+            <div className="rubric-row rubric-head"><span>Category</span><span>Points</span><span>What judges look for</span></div>
+            {rubric.map(([category, points, criteria]) => (
+              <div className="rubric-row" key={category}>
+                <strong>{category}</strong>
+                <b>{points}</b>
+                <span>{criteria}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-pad sponsor-cta" id="sponsors">
+        <div className="section-heading">
+          <SectionLabel>04 / FOR SPONSORS</SectionLabel>
+          <h2>Put your brand<br /><span>in the future.</span></h2>
+        </div>
+        <div className="sponsor-cta-body">
+          <p className="large-copy">The next generation is already building. Give them the tools, context, and encouragement to go further.</p>
+          <a className="button primary" href="Email in progress! Come back later!">Become a sponsor <ArrowUpRight size={17} /></a>
+        </div>
+      </section>
+
+      <section className="section-pad faq-section" id="faq">
+        <div className="section-heading split">
+          <div>
+            <SectionLabel>05 / QUESTIONS, ANSWERED</SectionLabel>
+            <h2>Good to<br /><span>know.</span></h2>
+          </div>
+          <MessageCircle className="faq-icon" />
+        </div>
+        <div className="faq-list">
+          {faqs.map(([question, answer], index) => (
+            <div className={`faq-item ${openFaq === index ? 'open' : ''}`} key={question}>
+              <button onClick={() => setOpenFaq(openFaq === index ? -1 : index)}>
+                <span>0{index + 1}</span>{question}{openFaq === index ? <Minus /> : <Plus />}
+              </button>
+              {openFaq === index && <p>{answer}</p>}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <footer className="footer section-pad" id="register">
+        <div className="footer-top">
+          <div>
+            <a href="#top" className="brand"><span className="brand-mark">&gt;_</span> QHSS HACKATHON</a>
+            <p>Make something worth<br />talking about.</p>
+          </div>
+          <div className="footer-register">
+            <SectionLabel>READY TO SHIP?</SectionLabel>
+            <h2>Your next idea<br /><span>starts here.</span></h2>
+            <a className="button primary" href="Interest form not made yet!">Register your interest <ArrowUpRight size={17} /></a>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <span>© 2025 QHSS HACK CLUB AND HACKATHON COMMITTEE</span>
+          <span>JAMAICA, NY / USA</span>
+          <div className="socials">
+            <a href="https://github.com" aria-label="GitHub"><Code2 /></a>
+            <a href="https://instagram.com/qhsshackathon/" aria-label="Instagram"><Camera /></a>
+            <a href="https://linkedin.com" aria-label="LinkedIn"><BriefcaseBusiness /></a>
+            <a href="mailto:hello@bytefest.example" aria-label="Email"><Mail /></a>
+          </div>
+        </div>
+      </footer>
+
+      {lightbox !== null && (
+        <div className="lightbox" role="dialog" aria-modal="true" onClick={() => setLightbox(null)}>
+          <button className="lightbox-close" onClick={() => setLightbox(null)} aria-label="Close gallery"><X /></button>
+          <img src={gallery[lightbox][1]} alt={gallery[lightbox][0]} onClick={(event) => event.stopPropagation()} />
+          <p>{gallery[lightbox][0]}</p>
+        </div>
+      )}
+    </main>
+  )
+}
