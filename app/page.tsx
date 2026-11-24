@@ -133,3 +133,32 @@ function Countdown() {
     }
 
     updateCountdown()
+    const timer = setInterval(updateCountdown, 1000)
+    return () => clearInterval(timer)
+  }, [])
+
+  return (
+    <div className="countdown" aria-label="Countdown to event">
+      <span><b>{String(time.days).padStart(2, '0')}</b><small>days</small></span><i>:</i>
+      <span><b>{String(time.hours).padStart(2, '0')}</b><small>hrs</small></span><i>:</i>
+      <span><b>{String(time.minutes).padStart(2, '0')}</b><small>min</small></span><i>:</i>
+      <span><b>{String(time.seconds).padStart(2, '0')}</b><small>sec</small></span>
+    </div>
+  )
+}
+
+export default function Page() {
+  const [menuOpen, setMenuOpen] = useState(false)
+  const [member, setMember] = useState(0)
+  const [lightbox, setLightbox] = useState<number | null>(null)
+  const [openFaq, setOpenFaq] = useState(0)
+
+  useEffect(() => {
+    const timer = setInterval(() => setMember((value) => (value + 1) % members.length), 5000)
+    return () => clearInterval(timer)
+  }, [])
+
+  return (
+    <main>
+      <nav className="nav">
+        <a href="#top" className="brand"><span className="brand-
