@@ -45,8 +45,8 @@ const gallery = [
 ]
 
 const formatSteps = [
-  ['01', 'Showcase', 'The games and event software built by the Hackathon Software department go on display, alongside games from Hack Software and builds from Hack Hardware. It is where the whole club’s semester of work gets seen.'],
-  ['02', 'Build', 'Teams of 2 to 4 build around the Winter Hackathon topic—Parent-Teacher Connection—across four award categories. The build window follows the familiar hackathon format unless the board changes it: around 5 hours.'],
+  ['01', 'Goal', 'Develop an idea, product, or vision that strengthens the connection between teachers and parents or between students and parents, helping families become more informed, involved, and connected to the school community.'],
+  ['02', 'Build', 'Teams of 2 to 4 build around the Winter Hackathon topic—Parent-Teacher & Student-Parent Connection—across four award categories. The build window follows the familiar hackathon format unless the board changes it: around 5 hours.'],
   ['03', 'Presentations + prizes', 'Every team submits an ~4-minute video and presents their work, explains their choices, and answers judge questions. Scores are tallied and prizes go out at the end.'],
 ]
 
@@ -59,7 +59,7 @@ const tracks = [
   [
     'SOFTWARE: BEGINNER',
     'Beginner Software Award',
-    'This award is based on how impressive a team’s innovation is as an idea and a pitch instead of coding or implementation capacity, demonstrating how a team’s innovation and use of software allowed for an effective project. Intended for teams who create a presentation, sketch, or anything that enables parent-teacher connection effectively without heavy software/systems.',
+    'This award is based on how impressive a team’s innovation is as an idea and a pitch instead of coding or implementation capacity, demonstrating how a team’s innovation and use of software allowed for an effective project. Intended for teams who create a presentation, sketch, or anything that enables parent-teacher or student-parent connection effectively without heavy software/systems.',
   ],
   [
     'SOFTWARE: ADVANCED',
@@ -84,7 +84,7 @@ const rubric = [
   ['It works', '25', 'The project runs live or functions as a clear, cohesive prototype.'],
   ['Justification', '25', 'Why this problem, why this approach, and what the team would change with more time.'],
   ['Implementation / Craft', '20', 'Code quality, CAD/3D design, or pitch depth—and every member can explain their part.'],
-  ['Theme fit', '15', 'How directly the project boosts parent-teacher connection and day-to-day involvement.'],
+  ['Theme fit', '15', 'How directly the project boosts parent-teacher and student-parent connection and day-to-day involvement.'],
   ['Presentation', '15', 'Evenly distributed ~4-minute video/demo, clear delivery, and strong answers to questions.'],
 ]
 
@@ -178,9 +178,9 @@ export default function Page() {
         <div className="hero-orbit" />
         <div className="hero-grid" />
         <div className="hero-copy">
-          <div className="eyebrow"><span className="live-dot" />WINTER HACKATHON / PARENT-TEACHER CONNECTION</div>
+          <div className="eyebrow"><span className="live-dot" />WINTER HACKATHON / PARENT-TEACHER &amp; STUDENT-PARENT CONNECTION</div>
           <h1>Build what<br /><em>matters.</em><span className="cursor">_</span></h1>
-          <p className="hero-sub">5 hours. One challenge: Parent-Teacher Connection. 4 Awards.</p>
+          <p className="hero-sub">5 hours. One challenge: Parent-Teacher &amp; Student-Parent Connection. 4 Awards.</p>
           <div className="hero-actions">
             <a className="button primary" href="#register">Register now <ArrowUpRight size={17} /></a>
             <a className="button secondary" href="#theme">Explore the event <ArrowDown size={16} /></a>
@@ -218,7 +218,7 @@ export default function Page() {
         <div className="beginner-card" id="theme">
           <div className="icon-box"><Users /></div>
           <div>
-            <SectionLabel>WINTER HACKATHON / TOPIC: PARENT-TEACHER CONNECTION</SectionLabel>
+            <SectionLabel>WINTER HACKATHON / TOPIC: PARENT-TEACHER &amp; STUDENT-PARENT CONNECTION</SectionLabel>
             <h3>Context &amp; Goal</h3>
             <p style={{ marginBottom: '12px' }}><strong style={{ color: '#eaf3ed' }}>Context:</strong> Even in a world shaped by digital media, communication between teachers and parents can still fall short. Parents may not have a clear picture of what is happening at school, how their children are performing day to day, or the stress they are experiencing. This gap can also exist between students and their parents, leaving families without the information they need to offer meaningful support.</p>
             <p><strong style={{ color: '#eaf3ed' }}>Goal:</strong> Develop an idea, product, or vision that strengthens the connection between teachers and parents or between students and parents, helping families become more informed, involved, and connected to the school community.</p>
@@ -277,7 +277,7 @@ export default function Page() {
         </div>
         <div className="tracks-heading">
           <SectionLabel>AWARDS &amp; CRITERIA</SectionLabel>
-          <p>Every team tackles the Parent-Teacher Connection topic and competes across four specialized award categories based on their approach.</p>
+          <p>Every team tackles the Parent-Teacher &amp; Student-Parent Connection topic and competes across four specialized award categories based on their approach.</p>
         </div>
         <div className="track-grid">
           {tracks.map(([name, title, description]) => (
@@ -292,7 +292,7 @@ export default function Page() {
           <div>
             <SectionLabel>JUDGING</SectionLabel>
             <h3>~4 minute video.<br /><span>2 minutes of questions.</span></h3>
-            <p>Videos are evaluated on how evenly team members split their sections and how deeply and feasibly their project addresses parent-teacher connection.</p>
+            <p>Videos are evaluated on how evenly team members split their sections and how deeply and feasibly their project addresses parent-teacher and student-parent connection.</p>
             <div className="award-list">
               <p>Winter Hackathon Awards</p>
               {awards.map((award) => <span key={award}>{award}</span>)}
